@@ -108,14 +108,12 @@ functions:
           method: get
           path: wsRegistrants/{workshopId}
           cors: true
-          #authorizer: Auth
           documentation:
             summary: Get all workshop registrants for a selected workshop
             description: Get all lottery registrants for a selected workshop
     iamRoleStatements:
       - Effect: Allow
         Action:
-          # - dynamodb:Query
           - dynamodb:Scan
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.WS_REGISTRANTS_TABLE}
       - Effect: Allow
@@ -126,30 +124,6 @@ functions:
     deploymentSettings:
       type: Linear10PercentEvery1Minute
       alias: Live
-
-  # GetWSRegistrant:
-  #   handler: src/lambda/http/getWSRegistrant.handler
-  #   events:
-  #     - http:
-  #         method: get
-  #         path: wsRegistrants/{emailAddress}
-  #         cors: true
-  #         documentation:
-  #           summary: Get workshops for a registrant
-  #           description: Get workshops selected by registrant
-  #   iamRoleStatements:
-  #     - Effect: Allow
-  #       Action:
-  #         - dynamodb:GetItem
-  #       Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.WS_REGISTRANTS_TABLE}
-  #     - Effect: Allow
-  #       Action:
-  #         - codedeploy:*
-  #       Resource:
-  #         - '*'
-  #   deploymentSettings:
-  #     type: Linear10PercentEvery1Minute
-  #     alias: Live
 
   SendEmail:
     handler: src/lambda/http/sendEmail.handler
@@ -182,7 +156,6 @@ functions:
           method: post
           path: wsRegistrants
           cors: true
-          #authorizer: Auth
           reqValidatorName: RequestBodyValidator
           documentation:
             summary: Create a workshop registrant
@@ -210,7 +183,6 @@ functions:
           method: post
           path: registrants
           cors: true
-          #authorizer: Auth
           reqValidatorName: RequestBodyValidator
           documentation:
             summary: Create a registrant
@@ -238,7 +210,6 @@ functions:
           method: get
           path: workshops
           cors: true
-          #authorizer: Auth
           documentation:
             summary: Get all workshops
             description: Get all workshops

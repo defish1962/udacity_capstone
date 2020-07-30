@@ -1,0 +1,212 @@
+{
+	"info": {
+		"_postman_id": "9290dc23-50f7-43af-b13f-d97cb545615c",
+		"name": "Fast Flash Workshops Lottery Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CreateRegistrant",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"emailAddress\": \"dave@davidefish.com\",\n    \"firstName\": \"Dave\",\n    \"lastName\": \"Fish\",\n    \"phoneNumber\": \"17206955654\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://yjer5tpylj.execute-api.us-east-2.amazonaws.com/dev/registrants",
+					"protocol": "https",
+					"host": [
+						"yjer5tpylj",
+						"execute-api",
+						"us-east-2",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"registrants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Workshops",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://yjer5tpylj.execute-api.us-east-2.amazonaws.com/dev/workshops",
+					"protocol": "https",
+					"host": [
+						"yjer5tpylj",
+						"execute-api",
+						"us-east-2",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"workshops"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Workshop",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"workshopName\": \"Fast Flash Memoir Weekend Workshop\",\n    \"workshopType\": \"2\",\n    \"workshopPrice\": 150,\n    \"workshopStart\": \"2020-12-04\",\n    \"workshopEnd\": \"2020-12-06\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://yjer5tpylj.execute-api.us-east-2.amazonaws.com/dev/workshops",
+					"protocol": "https",
+					"host": [
+						"yjer5tpylj",
+						"execute-api",
+						"us-east-2",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"workshops"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetRegistrant",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://yjer5tpylj.execute-api.us-east-2.amazonaws.com/dev/registrants/dave@davidefish.com",
+					"protocol": "https",
+					"host": [
+						"yjer5tpylj",
+						"execute-api",
+						"us-east-2",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"registrants",
+						"dave@davidefish.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateWSRegistrant",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"workshopId\": \"2\",\n    \"emailAddress\": \"defish@davidefish.com\",\n    \"paid\": \"No\",\n    \"selected\": \"No\",\n    \"waitlisted\": \"No\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://yjer5tpylj.execute-api.us-east-2.amazonaws.com/dev/wsRegistrants",
+					"protocol": "https",
+					"host": [
+						"yjer5tpylj",
+						"execute-api",
+						"us-east-2",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"wsRegistrants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Email",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"from\": \"workshops@kathy-fish.com\",\n    \"to\": \"david.fish@anthem.com\", \n    \"subject\": \"Fast Flash Workshops Lottery Enrollment Confirmation\",\n    \"html\": \"Congratulations! You have been enrolled!\",\n    \"bcc\": [\"registration@kathy-fish.com\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://yjer5tpylj.execute-api.us-east-2.amazonaws.com/dev/nodemailer",
+					"protocol": "https",
+					"host": [
+						"yjer5tpylj",
+						"execute-api",
+						"us-east-2",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"nodemailer"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

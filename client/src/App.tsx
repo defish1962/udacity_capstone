@@ -1,4 +1,5 @@
 import React, { Component, useState } from 'react'
+import { Helmet } from 'react-helmet'
 import { Link, Route, Router, Switch } from 'react-router-dom'
 import { Grid, Button, Menu, Segment, Header, Image } from 'semantic-ui-react'
 import logo from './skillshare-thumbnail.png'
@@ -23,11 +24,13 @@ export interface AppProps {
 
 export interface AppState {}
 
+const TITLE = 'Fast Flash Workshops Lottery Enrollment'
+
 export default class App extends Component<AppProps, AppState> {
   render() {
     return (
       <div>
-        <title>Fast Flash Workshops</title>
+        <Helmet>{TITLE}</Helmet>
         <Segment style={{ padding: '4em 0em' }} vertical>
           <Grid container stackable verticalAlign="middle">
             <Grid.Row>

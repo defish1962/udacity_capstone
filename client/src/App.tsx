@@ -27,6 +27,9 @@ export interface AppState {}
 const TITLE = 'Fast Flash Workshops Lottery Enrollment'
 
 export default class App extends Component<AppProps, AppState> {
+  componentDidMount() {
+    document.title = 'Fast Flash'
+  }
   render() {
     return (
       <div>
